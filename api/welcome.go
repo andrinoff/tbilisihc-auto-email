@@ -18,6 +18,16 @@ type RequestBody struct {
 
 // Handler is the main entry point for the Vercel serverless function.
 func Handler(w http.ResponseWriter, r *http.Request) {
+	allowedOrigin := "https://tbilisi.hackclub.com"
+	w.Header().Set("Access-Control-Allow-Origin", allowedOrigin)
+	w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+	// Handle preflight CORS requests
+	if r.Method == http.MethodOptions {
+		w.WriteHeader(http.StatusOK)
+		return
+	}
 	// --- 1. Basic Setup & Security ---
 
 	// Only allow POST requests
