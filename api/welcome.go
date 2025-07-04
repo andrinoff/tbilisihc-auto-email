@@ -26,21 +26,38 @@ type EmailTemplateData struct {
 // Handler is the main entry point for the Vercel serverless function.
 func Handler(w http.ResponseWriter, r *http.Request) {
 	// --- CORS and Basic Setup ---
-	allowedOrigin := "https://tbilisi.hackclub.com" // Adjust if you have other origins
-	w.Header().Set("Access-Control-Allow-Origin", allowedOrigin)
+	allowedOrigins := map[string]bool{
+		"https://tbilisi.hackclub.com":    true,
+		"https://tbilisihc.andrinoff.com": true,
+	}
+
+	// 2. Get the origin of the request.
+	origin := r.Header.Get("Origin")
+
+	// 3. Check if the origin is in your whitelist and set the header.
+	if allowedOrigins[origin] {
+		w.Header().Set("Access-control-Allow-Origin", origin)
+	}
+
+	// The rest of the CORS and handler logic remains the same.
 	w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
+	// Handle preflight CORS requests
 	if r.Method == http.MethodOptions {
 		w.WriteHeader(http.StatusOK)
 		return
 	}
 
+	// (The rest of your existing code continues from here...)
+
+	// Only allow POST requests
 	if r.Method != http.MethodPost {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
+	// Set the response content type to JSON
 	w.Header().Set("Content-Type", "application/json")
 
 	// --- Load Credentials ---
