@@ -124,7 +124,7 @@ func generateHTML(messageContent string) (string, error) {
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f4f7; margin: 0; padding: 0; color: #333; }
         .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .header { background-color: #ec3750; padding: 40px; text-align: center; }
+        .header { background-color: #1DB7FE; padding: 40px; text-align: center; }
         .header img { max-width: 150px; }
         .content { padding: 40px; line-height: 1.6; }
         .footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
