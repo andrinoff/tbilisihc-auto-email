@@ -1,6 +1,6 @@
 # Tbilisi HC Auto Email
 
-[![Go Version](https://img.shields.io/badge/go-1.18-blue.svg)](https://golang.org/dl/)
+[![Go Version](https://img.shields.io/badge/go-1.23.1+-blue.svg)](https://golang.org/dl/)
 [![License: Unlicense](https://img.shields.io/badge/License-Unlicense-gray.svg)](https://opensource.org/licenses/unlicense)
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftbilisihc-auto-email%2Ftbilisihc-auto-email)
 
